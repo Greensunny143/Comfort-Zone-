@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Promos -Comfort Zone</title>
+   
+  <link rel="stylesheet" href="css/promos.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fredoka:wght@500;600;700&display=swap">
+
+  <link rel="stylesheet" href="css/promos.css">
+
+  <!-- PyScript -->
+  <link rel="stylesheet"
+    href="https://pyscript.net/releases/2024.1.1/core.css">
+  <script defer
+    src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+</head>
+
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="bar">
+      
+     <a class="brand" href="index.html">
+  <img src="logo.png " width="150" alt="Comfort Zone">
+       Comfort Zone
+    </a>
+
+      <nav aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="featured.html">Featured</a>
+        <a href="bestsellers.html">Best sellers</a>
+        <a href="promos.html" aria-current="page">Promos</a>
+        <a href="about.html">About us</a>
+      </nav>
+
+      <a class="cartbtn" href="order.html">Order now</a>
+    </div>
+  </header>
+
+  <main class="view" id="promos">
+
+    <div class="head" style="margin-bottom:24px">
+      <span class="eyebrow">Promos &amp; Offers</span>
+      <h1>Little ways to save</h1>
+      <p class="lede">
+        Student life shouldn't be expensive. Take advantage of
+        our afternoon perks and daily combo bundles.
+      </p>
+    </div>
+
+    <!-- Event-driven student promo -->
+    <div class="promo p">
+      <span class="big">10% off</span>
+      <h3>Student hour</h3>
+      <p>
+        Show a valid school ID on weekdays from 2:00 PM
+        to 5:00 PM to receive 10% off signature lemonade.
+      </p>
+
+      <button type="button" class="btn pink small"
+              id="student-btn">
+        Check student offer
+      </button>
+
+      <p id="student-message" aria-live="polite"></p>
+    </div>
+
+    <div class="promos" style="margin-top:24px">
+
+      <div class="promo b">
+        <span class="big">₱129</span>
+        <h3>The Study Set</h3>
+        <p>
+          A classic regular lemonade and a freshly baked
+          butter croissant. Original price: ₱144.
+        </p>
+
+        <button type="button" class="btn blue small order-promo"
+                data-promo="The Study Set">
+          Order combo
+        </button>
+      </div>
+
+      <div class="promo p">
+        <span class="big">Bring a friend</span>
+        <h3>Duo Sweet Treat</h3>
+        <p>
+          Two regular lemonades and two chocolate chip cookies
+          bundled in one set.
+        </p>
+
+        <button type="button" class="btn pink small order-promo"
+                data-promo="Duo Sweet Treat">
+          Grab the duo
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Message displayed by Python -->
+    <div class="promo b" style="margin-top:24px">
+      <h3>Promo notifications</h3>
+      <p id="promo-message" aria-live="polite">
+        Welcome to Comfort Zone! Choose a promo to get started.
+      </p>
+    </div>
+
+    <!-- Loyalty card -->
+    <div class="feature"
+         style="margin-top:36px;border-radius:24px">
+      <div class="info" style="padding:28px">
+        <span class="eyebrow">Loyalty Card</span>
+        <h2>Collect stamps on every visit</h2>
+
+        <p class="muted">
+          Every drink purchase earns one stamp. Collect
+          eight stamps to enjoy any large drink on the house.
+        </p>
+
+        <p>
+          Your stamps:
+          <strong id="stamp-count">0 / 8</strong>
+        </p>
+
+        <button type="button" class="btn pink small"
+                id="stamp-btn">
+          Add a stamp
+        </button>
+
+        <button type="button" class="btn ghost small"
+                id="reset-btn">
+          Reset stamps
+        </button>
+
+        <p id="stamp-message" aria-live="polite"></p>
+
+        <div class="row" style="margin-top:10px">
+          <a class="btn pink small" href="order.html">
+            Start your order
+          </a>
+          <a class="btn ghost small" href="menu.html">
+            Browse menu
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="split"
+         style="margin-top:40px;padding-top:20px;border-top:1px solid var(--line)">
+      <a class="btn ghost small" href="bestsellers.html">
+        &larr; Previous: Best sellers
+      </a>
+      <a class="btn ghost small" href="about.html">
+        Next: About us &rarr;
+      </a>
+    </div>
+
+  </main>
+
+  <footer>
+    <span>© 2026 Lemon Lane · Comfort Zone. Fresh lemonade and pastries.</span>
+    <span>Open daily. Study-friendly seating.</span>
+  </footer>
+
+</div>
+
+<!-- Load Python event handlers -->
+<script type="py" src="theme.py"></script>
+
+</body>
+</html>
+
+from 
