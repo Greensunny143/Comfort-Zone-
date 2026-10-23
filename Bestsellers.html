@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Best Sellers - Comfort Zone</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fredoka:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="css/bestsellers.css">
+
+<link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+<script type="mjs" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+
+
+<style>
+  .interactive-bar {
+    background: #ffffff;
+    border: 1px solid var(--line, #eee);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .search-wrapper input {
+    padding: 8px 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    width: 250px;
+  }
+  .cart-summary {
+    background: #fff0f5;
+    border: 1px solid #ffb6c1;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 500;
+    color: #333;
+  }
+  .cart-summary strong {
+    color: #d63384;
+  }
+  .btn-reset {
+    background: #e0e0e0;
+    border: none;
+    padding: 4px 10px;
+    border-radius: 12px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 12px;
+  }
+  .cart-preview {
+    background: #fafafa;
+    border: 1px dashed var(--line, #ddd);
+    border-radius: 12px;
+    padding: 14px 20px;
+    margin-bottom: 24px;
+  }
+  .cart-preview h4 {
+    margin: 0 0 8px 0;
+    font-size: 15px;
+    color: #444;
+  }
+  .cart-preview ul {
+    margin: 0;
+    padding-left: 20px;
+    font-size: 14px;
+    color: #555;
+  }
+  .empty-cart {
+    list-style: none;
+    margin-left: -20px;
+    color: #888;
+    font-style: italic;
+  }
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="bar">
+      <a class="brand" href="index.html">
+        <img src="c:\Users\Abbyyy\Downloads\logo.png.png" alt="Comfort Zone Logo" width="44" height="44">
+        Comfort Zone
+      </a>
+      <nav aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="featured.html">Featured</a>
+        <a href="bestsellers.html" aria-current="page">Best sellers</a>
+        <a href="promos.html">Promos</a>
+        <a href="about.html">About us</a>
+      </nav>
+
+      <a class="cartbtn" href="order.html">Order now</a>
+    </div>
+  </header>
+
+  <main class="view" id="bestsellers">
+    <div class="split" style="margin-bottom:24px">
+      <div class="head">
+        <span class="eyebrow">Best sellers</span>
+        <h1>What everyone orders</h1>
+        <p class="lede">The crowd favorites that keep our study tables full day after day.</p>
+      </div>
+      <div class="row">
+        <a class="btn ghost small" href="menu.html">Full menu</a>
+        <a class="btn pink small" href="promos.html">See promos &rarr;</a>
+      </div>
+    </div>
+
+    <div class="interactive-bar">
+      <div class="search-wrapper">
+        <input type="text" id="menu-search" placeholder="Filter items with Python..." py-keyup="filter_menu">
+      </div>
+      <div class="cart-summary">
+        🛒 Total: <strong>₱<span id="item-total">0</span></strong>
+        <button class="btn-reset" py-click="reset_cart">Clear</button>
+      </div>
+    </div>
+
+    <div class="cart-preview">
+      <h4>Your Order List:</h4>
+      <ul id="cart-list">
+        <li class="empty-cart">No items added yet.</li>
+      </ul>
+    </div>
+
+    <div class="grid" id="product-grid">
+      <article class="card" data-title="strawberry pink lemonade">
+        <div class="pic pink">
+          <img src="strawberry lemonade pink.jpg" alt="Strawberry Pink Lemonade">
+        </div>
+        <div class="body">
+          <span class="badge">Best seller</span>
+          <h3>Strawberry Pink Lemonade</h3>
+          <p class="desc">Real strawberry puree swirled into tart lemonade. Sweet, pink, and photogenic.</p>
+          <div class="buy">
+            <div class="price">₱99</div>
+      
+            <button class="btn pink small" py-click="add_to_cart('Strawberry Pink Lemonade', 99)">Order</button>
+          </div>
+        </div>
+      </article>
+
+    
+      <article class="card" data-title="lychee lemonade">
+        <div class="pic pink">
+          <img src="images/blueberry-muffin.png/Lychee_Lemonade_3.webp" alt="Lychee Lemonade">
+        </div>
+        <div class="body">
+          <span class="badge">Best seller</span>
+          <h3>Lychee Lemonade</h3>
+          <p class="desc">Floral lychee, bright lemon, and a few lychee pearls at the bottom.</p>
+          <div class="buy">
+            <div class="price">₱99</div>
+           
+            <button class="btn pink small" py-click="add_to_cart('Lychee Lemonade', 99)">Order</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-title="blueberry muffin">
+        <div class="pic pink">
+          <img src="images/blueberry-muffin.png/Blueberry-Muffins-1-of-1.jpg" alt="Blueberry Muffin">
+        </div>
+        <div class="body">
+          <span class="badge">Best seller</span>
+          <h3>Blueberry Muffin</h3>
+          <p class="desc">Soft crumb loaded with blueberries and a sugar-crisp top.</p>
+          <div class="buy">
+            <div class="price">₱70</div>
+            
+            <button class="btn pink small" py-click="add_to_cart('Blueberry Muffin', 70)">Order</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-title="choco chip cookie">
+        <div class="pic blue">
+          <img src="images/blueberry-muffin.png/choco chip cookie.jpg" alt="Choco Chip Cookie">
+        </div>
+        <div class="body">
+          <span class="badge blue">Best seller</span>
+          <h3>Choco Chip Cookie</h3>
+          <p class="desc">Chewy middle, crisp edges, and chocolate in every bite.</p>
+          <div class="buy">
+            <div class="price">₱55</div>
+            <button class="btn pink small" py-click="add_to_cart('Choco Chip Cookie', 55)">Order</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+    <div class="split" style="margin-top:40px;padding-top:20px;border-top:1px solid var(--line)">
+      <a class="btn ghost small" href="featured.html">&larr; Previous: Featured</a>
+      <a class="btn ghost small" href="promos.html">Next: Promos &rarr;</a>
+    </div>
+
+  </main>
+  <footer>
+    <span>© 2026 Lemon Lane · Comfort Zone. Fresh lemonade and pastries.</span>
+    <span>Open daily. Study-friendly seating.</span>
+  </footer>
+</div>
+
+<script type="py">
+from pyscript import document
+
+# Python State Management list to track cart orders
+cart = []
+
+def add_to_cart(event, name, price):
+    """Event handler triggered when an Order button is clicked."""
+    cart.append({"name": name, "price": price})
+    update_ui()
+
+def reset_cart(event):
+    """Event handler triggered when the Clear button is clicked."""
+    cart.clear()
+    update_ui()
+
+def update_ui():
+    """Updates total cost and renders the itemized order list dynamically in the DOM."""
+    total_price = sum(item["price"] for item in cart)
+    document.querySelector("#item-total").innerText = str(total_price)
+    
+    cart_list_element = document.querySelector("#cart-list")
+    
+    if len(cart) == 0:
+        cart_list_element.innerHTML = '<li class="empty-cart">No items added yet.</li>'
+    else:
+        html_items = ""
+        for item in cart:
+            html_items += f"<li>{item['name']} - ₱{item['price']}</li>"
+        cart_list_element.innerHTML = html_items
+
+def filter_menu(event):
+    """Event handler triggered in real-time as the user types in the search box."""
+    query = document.querySelector("#menu-search").value.lower().strip()
+    cards = document.querySelectorAll(".card")
+    
+    for card in cards:
+        title = card.getAttribute("data-title") or ""
+        if query in title:
+            card.style.display = ""
+        else:
+            card.style.display = "none"
+</script>
+
+</body>
+</html>
