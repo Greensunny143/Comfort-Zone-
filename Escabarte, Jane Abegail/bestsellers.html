@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Best Sellers - Comfort Zone</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fredoka:wght@500;600;700&display=swap">
+
+  <!-- PyScript Core -->
+  <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+  <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/bestsellers.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="bar">
+      <a class="brand" href="index.html">
+        <img src="c:\Users\Abbyyy\Desktop\Escabarte, Jane Abegail\images\logo.png.png" alt="Comfort Zone Logo" width="44" height="44">
+        Comfort Zone
+      </a>
+      <nav aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="featured.html">Featured</a>
+        <a href="bestsellers.html" aria-current="page">Best sellers</a>
+        <a href="promos.html">Promos</a>
+        <a href="about.html">About us</a>
+      </nav>
+
+      <a class="cartbtn" href="order.html">Order now (<span id="cart-count">0</span>)</a>
+    </div>
+  </header>
+
+  <main class="view" id="bestsellers">
+    <div class="split" style="margin-bottom:24px">
+      <div class="head">
+        <span class="eyebrow">Best sellers</span>
+        <h1>What everyone orders</h1>
+        <p class="lede">The crowd favorites that keep our study tables full day after day.</p>
+      </div>
+      <div class="row">
+        <a class="btn ghost small" href="menu.html">Full menu</a>
+        <a class="btn pink small" href="promos.html">See promos &rarr;</a>
+      </div>
+    </div>
+
+    <!-- Interactive Filter Controls -->
+    <div class="filter-controls" style="margin-bottom: 20px; display: flex; gap: 10px;">
+      <button class="btn small" py-click="filter_category" data-cat="all">All Items</button>
+      <button class="btn ghost small" py-click="filter_category" data-cat="drink">Drinks Only</button>
+      <button class="btn ghost small" py-click="filter_category" data-cat="pastry">Pastries Only</button>
+    </div>
+
+    <div class="grid">
+      <article class="card" data-category="drink">
+        <div class="pic pink">
+          <img src="c:\Users\Abbyyy\Desktop\Escabarte, Jane Abegail\images\strawberry pink lemonade.jpg" alt="Strawberry Pink Lemonade">
+        </div>
+        <div class="body">
+          <span class="badge">Best seller</span>
+          <h3>Strawberry Pink Lemonade</h3>
+          <p class="desc">Real strawberry puree swirled into tart lemonade. Sweet, pink, and photogenic.</p>
+          <div class="buy">
+            <div class="price">₱99</div>
+            <button class="btn pink small" py-click="add_to_cart" data-name="Strawberry Pink Lemonade" data-price="99">+ Add to Cart</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-category="drink">
+        <div class="pic pink">
+          <img src="c:\Users\Abbyyy\Downloads\lychee lemonade.jfif" alt="Lychee Lemonade">
+        </div>
+        <div class="body">
+          <span class="badge">Best seller</span>
+          <h3>Lychee Lemonade</h3>
+          <p class="desc">Floral lychee, bright lemon, and a few lychee pearls at the bottom.</p>
+          <div class="buy">
+            <div class="price">₱99</div>
+            <button class="btn pink small" py-click="add_to_cart" data-name="Lychee Lemonade" data-price="99">+ Add to Cart</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-category="pastry">
+        <div class="pic pink">
+          <img src="c:\Users\Abbyyy\Downloads\blue berry muffin.jfif" alt="Blueberry Muffin">
+        </div>
+        <div class="body">
+          <span class="badge">Best seller</span>
+          <h3>Blueberry Muffin</h3>
+          <p class="desc">Soft crumb loaded with blueberries and a sugar-crisp top.</p>
+          <div class="buy">
+            <div class="price">₱70</div>
+            <button class="btn pink small" py-click="add_to_cart" data-name="Blueberry Muffin" data-price="70">+ Add to Cart</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-category="pastry">
+        <div class="pic blue">
+          <img src="c:\Users\Abbyyy\Downloads\choco chip.jfif" alt="Choco Chip Cookie">
+        </div>
+        <div class="body">
+          <span class="badge blue">Best seller</span>
+          <h3>Choco Chip Cookie</h3>
+          <p class="desc">Chewy middle, crisp edges, and chocolate in every bite.</p>
+          <div class="buy">
+            <div class="price">₱55</div>
+            <button class="btn pink small" py-click="add_to_cart" data-name="Choco Chip Cookie" data-price="55">+ Add to Cart</button>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Cart Summary Box -->
+    <section class="cart-summary-box" style="margin-top:30px; padding:20px; border:1px solid var(--line); border-radius:16px;">
+      <h2>Your Selection</h2>
+      <ul id="cart-list" style="padding-left:20px; margin: 10px 0;">
+        <li><em>No items selected yet. Click "+ Add to Cart" above!</em></li>
+      </ul>
+      <p style="font-weight: bold; font-size: 1.1rem;">Total: ₱<span id="cart-total">0</span></p>
+    </section>
+
+    <div class="split" style="margin-top:40px;padding-top:20px;border-top:1px solid var(--line)">
+      <a class="btn ghost small" href="featured.html">&larr; Previous: Featured</a>
+      <a class="btn ghost small" href="promos.html">Next: Promos &rarr;</a>
+    </div>
+
+  </main>
+  <footer>
+    <span>© 2026 Lemon Lane · Comfort Zone. Fresh lemonade and pastries.</span>
+    <span>Open daily. Study-friendly seating.</span>
+  </footer>
+</div>
+
+<!-- Python Event-Driven Code inside PyScript -->
+<script type="py">
+from pyscript import document
+
+cart = []
+
+def add_to_cart(event):
+    button = event.currentTarget
+    item_name = button.getAttribute("data-name")
+    item_price = int(button.getAttribute("data-price"))
+    
+    cart.append({"name": item_name, "price": item_price})
+    update_cart_ui()
+
+def update_cart_ui():
+    cart_count_el = document.querySelector("#cart-count")
+    cart_list_el = document.querySelector("#cart-list")
+    cart_total_el = document.querySelector("#cart-total")
+
+    cart_count_el.innerText = str(len(cart))
+    total = sum(item["price"] for item in cart)
+    cart_total_el.innerText = str(total)
+
+    if not cart:
+        cart_list_el.innerHTML = "<li><em>No items selected yet. Click '+ Add to Cart' above!</em></li>"
+    else:
+        html = ""
+        for item in cart:
+            html += f"<li>{item['name']} - ₱{item['price']}</li>"
+        cart_list_el.innerHTML = html
+
+def filter_category(event):
+    btn = event.currentTarget
+    selected_cat = btn.getAttribute("data-cat")
+
+    cards = document.querySelectorAll(".card")
+    for card in cards:
+        card_cat = card.getAttribute("data-category")
+        if selected_cat == "all" or card_cat == selected_cat:
+            card.style.display = "flex"
+        else:
+            card.style.display = "none"
+</script>
+</body>
+</html>
