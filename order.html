@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Order Now - Comfort Zone</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fredoka:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="css/order.css">
+
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="bar">
+      <a class="brand" href="index.html">
+        <img src="images/LOGO.png" alt="Comfort Zone Logo" width="44" height="44">
+        Comfort Zone
+      </a>
+      <nav aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="featured.html">Featured</a>
+        <a href="bestsellers.html">Best sellers</a>
+        <a href="promos.html">Promos</a>
+        <a href="about.html">About us</a>
+      </nav>
+
+      <a class="cartbtn" href="order.html" aria-current="page">Order now</a>
+    </div>
+  </header>
+
+  <main class="view" id="order">
+
+    <div class="head">
+      <span class="eyebrow">Checkout</span>
+      <h1>Order Ahead</h1>
+      <p class="lede">Place your order ahead to skip the line. Pick up and pay directly at the counter.</p>
+    </div>
+
+    <div class="checkout" style="margin-top:20px">
+      <div class="panel">
+        <h2 style="font-size:1.4rem">Select your item</h2>
+        
+        <div class="field">
+          <label for="itemSelect">Drink or Pastry</label>
+          <select id="itemSelect" class="sizesel">
+            <option value="99" data-name="Blue Butterfly Lemonade (Regular)">Blue Butterfly Lemonade (Regular) - ₱99</option>
+            <option value="119" data-name="Blue Butterfly Lemonade (Large)">Blue Butterfly Lemonade (Large) - ₱119</option>
+            <option value="99" data-name="Strawberry Pink Lemonade">Strawberry Pink Lemonade - ₱99</option>
+            <option value="99" data-name="Lychee Lemonade">Lychee Lemonade - ₱99</option>
+            <option value="79" data-name="Classic Lemonade">Classic Lemonade - ₱79</option>
+            <option value="70" data-name="Blueberry Muffin">Blueberry Muffin - ₱70</option>
+            <option value="55" data-name="Choco Chip Cookie">Choco Chip Cookie - ₱55</option>
+            <option value="65" data-name="Butter Croissant">Butter Croissant - ₱65</option>
+            <option value="129" data-name="The Study Set (Combo)">The Study Set (Combo) - ₱129</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="quantity">Quantity</label>
+          <input type="number" id="quantity" min="1" max="10" value="1" style="font-weight:700">
+        </div>
+
+        <div style="background:var(--bg);padding:16px;border-radius:18px;border:1px dashed var(--line);margin-top:10px">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span style="color:var(--muted)">Item subtotal:</span>
+            <strong id="subtotalDisplay" style="font-size:1.3rem;font-family:var(--font-display);color:var(--pink)">₱99</strong>
+          </div>
+        </div>
+
+        <p class="muted" style="font-size:.9rem">Need more items? You can add instructions or list multiple flavors in the notes box.</p>
+      </div>
+      <form class="panel" id="orderForm">
+        <h2 style="font-size:1.4rem">Customer Details</h2>
+
+        <div class="field">
+          <label for="cname">Your Name</label>
+          <input type="text" id="cname" required placeholder="e.g. Maria Santos">
+        </div>
+
+        <div class="field">
+          <label for="cphone">Mobile Number</label>
+          <input type="tel" id="cphone" required placeholder="09XX XXX XXXX">
+        </div>
+
+        <fieldset class="field">
+          <legend>Dining Option</legend>
+          <div class="opts">
+            <label class="opt">
+              <input type="radio" name="mode" value="Dine-in" checked>
+              <span>Dine-in (Study table)</span>
+            </label>
+            <label class="opt">
+              <input type="radio" name="mode" value="Take-out">
+              <span>Take-out</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label for="ctime">Ready by</label>
+          <select id="ctime">
+            <option>As soon as possible</option>
+            <option>In 15 minutes</option>
+            <option>In 30 minutes</option>
+            <option>In 1 hour</option>
+          </select>
+        </div>
+
+        <fieldset class="field">
+          <legend>Payment method at counter</legend>
+          <div class="opts">
+            <label class="opt">
+              <input type="radio" name="payment" value="Cash" checked>
+              <span>Cash</span>
+            </label>
+            <label class="opt">
+              <input type="radio" name="payment" value="GCash">
+              <span>GCash</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label for="notes">Notes / Special requests (optional)</label>
+          <textarea id="notes" rows="2" placeholder="e.g. Less ice, extra straw, allergy info..."></textarea>
+        </div>
+
+        <button class="btn pink" type="submit" style="margin-top:8px">Submit Order</button>
+      </form>
+
+    </div>
+    <div id="confirmationBox" style="display:none;margin-top:24px;background:var(--surface);border:2px solid var(--ok);border-radius:24px;padding:28px">
+      <span class="badge" style="background:var(--ok)">Order Received</span>
+      <h2 style="margin-top:10px">Thank you, <span id="confirmName"></span>!</h2>
+      <p class="muted">Your order has been recorded for <strong id="confirmMode"></strong>.</p>
+      <div style="background:var(--bg);border-radius:14px;padding:16px;margin:16px 0">
+        <p><strong>Item:</strong> <span id="confirmItem"></span></p>
+        <p><strong>Total Due at Counter:</strong> <span id="confirmTotal" style="color:var(--pink);font-weight:700"></span></p>
+        <p><strong>Ready time:</strong> <span id="confirmTime"></span></p>
+        <p><strong>Payment:</strong> <span id="confirmPayment"></span></p>
+      </div>
+      <a class="btn pink small" href="index.html">Back to Home</a>
+    </div>
+
+  </main>
+  <footer>
+    <span>© 2026 Lemon Lane · Comfort Zone. Fresh lemonade and pastries.</span>
+    <span>Open daily. Study-friendly seating.</span>
+  </footer>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite">Order confirmed! See you soon.</div>
+
+<script>
+  const itemSelect = document.getElementById('itemSelect');
+  const quantity = document.getElementById('quantity');
+  const subtotalDisplay = document.getElementById('subtotalDisplay');
+  const orderForm = document.getElementById('orderForm');
+  const confirmationBox = document.getElementById('confirmationBox');
+  const toast = document.getElementById('toast');
+
+  function updateSubtotal() {
+    const price = parseInt(itemSelect.value, 10);
+    const qty = parseInt(quantity.value, 10) || 1;
+    const total = price * qty;
+    subtotalDisplay.textContent = '₱' + total;
+    return { total, qty };
+  }
+
+  itemSelect.addEventListener('change', updateSubtotal);
+  quantity.addEventListener('input', updateSubtotal);
+
+  orderForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('cname').value;
+    const mode = document.querySelector('input[name="mode"]:checked').value;
+    const payment = document.querySelector('input[name="payment"]:checked').value;
+    const time = document.getElementById('ctime').value;
+    const itemName = itemSelect.options[itemSelect.selectedIndex].getAttribute('data-name');
+    const { total, qty } = updateSubtotal();
+
+    document.getElementById('confirmName').textContent = name;
+    document.getElementById('confirmMode').textContent = mode;
+    document.getElementById('confirmItem').textContent = qty + 'x ' + itemName;
+    document.getElementById('confirmTotal').textContent = '₱' + total;
+    document.getElementById('confirmTime').textContent = time;
+    document.getElementById('confirmPayment').textContent = payment;
+
+    confirmationBox.style.display = 'block';
+    confirmationBox.scrollIntoView({ behavior: 'smooth' });
+
+    // Show toast
+    toast.classList.add('on');
+    setTimeout(() => {
+      toast.classList.remove('on');
+    }, 4000);
+  });
+</script>
+
+</body>
+</html>
