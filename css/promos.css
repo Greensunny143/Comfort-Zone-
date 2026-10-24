@@ -1,0 +1,52 @@
+@import url('common.css');
+
+.promos {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+}
+.promo {
+  border-radius: 24px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+}
+.promo.p { background: var(--pink-soft); }
+.promo.b { background: var(--blue-soft); }
+.promo .big {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.promo.p .big { color: var(--pink); }
+.promo.b .big { color: var(--blue); }
+
+.badge {
+  align-self: flex-start;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  background: var(--pink);
+  color: var(--on-pink);
+  border-radius: 999px;
+  padding: 3px 10px;
+}
+
+.feature {
+  border-radius: 32px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+.feature .info {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: flex-start;
+  justify-content: center;
+}
