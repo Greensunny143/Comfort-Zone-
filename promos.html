@@ -1,508 +1,746 @@
+
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Promos - Comfort Zone</title>
-<link rel="icon" type="image/x-icon" href="images/logo.ico">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fredoka:wght@500;600;700&display=swap">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
+  <title>Promos - Comfort Zone</title>
 
-<style>
-:root {
-  color-scheme: dark;
-  --bg: #12162b;
-  --wash-pink: #2a1830;
-  --wash-blue: #172646;
-  --surface: #1b2140;
-  --ink: #eef1ff;
-  --muted: #a6aed8;
-  --line: #2c3560;
-  --pink: #ff7fae;
-  --pink-soft: #3a1f36;
-  --on-pink: #2a0f1d;
-  --blue: #7daeff;
-  --blue-soft: #1e2d55;
-  --on-blue: #0d1a35;
-  --ok: #5fd6a2;
-  --shadow: 0 10px 30px rgba(0, 0, 0, .35);
-  --font-display: "Fredoka", "Trebuchet MS", system-ui, sans-serif;
-  --font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-}
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
 
-* {
-  box-sizing: border-box;
-}
+  <style>
+    :root {
+      color-scheme: dark;
 
-body {
-  margin: 0;
-  background: var(--bg);
-  background-image:
-    radial-gradient(60rem 28rem at 8% -4%, var(--wash-pink), transparent 70%),
-    radial-gradient(56rem 30rem at 100% 2%, var(--wash-blue), transparent 70%);
-  background-repeat: no-repeat;
-  color: var(--ink);
-  font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.55;
-  padding-left: max(16px, env(safe-area-inset-left, 0px));
-  padding-right: max(16px, env(safe-area-inset-right, 0px));
-  padding-block: 0 48px;
-}
+      --bg: #12162b;
+      --wash-pink: #2a1830;
+      --wash-blue: #172646;
+      --surface: #1b2140;
+      --ink: #eef1ff;
+      --muted: #a6aed8;
+      --line: #2c3560;
 
-img {
-  max-width: 100%;
-}
+      --pink: #ff7fae;
+      --pink-soft: #3a1f36;
+      --on-pink: #2a0f1d;
 
-[hidden] {
-  display: none !important;
-}
+      --blue: #7daeff;
+      --blue-soft: #1e2d55;
+      --on-blue: #0d1a35;
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0 0 auto;
-  height: env(safe-area-inset-top, 0px);
-  z-index: 30;
-  background: var(--bg);
-}
+      --ok: #5fd6a2;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
 
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
+      --font-display: "Fredoka", "Trebuchet MS", system-ui, sans-serif;
+      --font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
 
-  background-image: url("images/LOGO.png");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: min(70vw, 70vh);
+    * {
+      box-sizing: border-box;
+    }
 
-  opacity: 0.07;
-  mix-blend-mode: screen;
+    html {
+      scroll-behavior: smooth;
+    }
 
-  pointer-events: none;
-  z-index: 0;
-}
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background-color: var(--bg);
+      background-image:
+        radial-gradient(60rem 28rem at 8% -4%, var(--wash-pink), transparent 70%),
+        radial-gradient(56rem 30rem at 100% 2%, var(--wash-blue), transparent 70%);
+      background-repeat: no-repeat;
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.55;
+      padding-left: max(16px, env(safe-area-inset-left, 0px));
+      padding-right: max(16px, env(safe-area-inset-right, 0px));
+      padding-bottom: 48px;
+    }
 
-.wrap {
-  max-width: 1100px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-}
+    img {
+      max-width: 100%;
+    }
 
-h1, h2, h3 {
-  font-family: var(--font-display);
-  font-weight: 600;
-  line-height: 1.12;
-  margin: 0;
-  text-wrap: balance;
-  letter-spacing: .005em;
-}
+    [hidden] {
+      display: none !important;
+    }
 
-h1 {
-  font-size: clamp(2.3rem, 7vw, 4rem);
-}
+    /* Subtle neon logo watermark */
 
-h2 {
-  font-size: clamp(1.7rem, 4.5vw, 2.4rem);
-}
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url("image/LOGO.png");
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: min(70vw, 70vh);
+      opacity: 0.07;
+      mix-blend-mode: screen;
+      pointer-events: none;
+      z-index: 0;
+    }
 
-h3 {
-  font-size: 1.35rem;
-  margin-top: 4px;
-}
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
 
-p {
-  margin: 0;
-}
+    h1,
+    h2,
+    h3 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      line-height: 1.12;
+      margin: 0;
+      text-wrap: balance;
+      letter-spacing: 0.005em;
+    }
 
-a {
-  color: var(--blue);
-}
+    h1 {
+      font-size: clamp(2.3rem, 7vw, 4rem);
+      color: #fff0f7;
+      text-shadow:
+        0 0 8px rgba(255, 127, 174, 0.5),
+        0 0 20px rgba(255, 35, 120, 0.25);
+    }
 
-button {
-  font: inherit;
-  color: inherit;
-  cursor: pointer;
-}
+    h2 {
+      font-size: clamp(1.7rem, 4.5vw, 2.4rem);
+    }
 
-:focus-visible {
-  outline: 3px solid var(--blue);
-  outline-offset: 2px;
-  border-radius: 8px;
-}
+    h3 {
+      font-size: 1.35rem;
+      margin-top: 4px;
+    }
 
-.eyebrow {
-  font-size: .78rem;
-  font-weight: 700;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--pink);
-}
+    p {
+      margin: 0;
+    }
 
-.lede {
-  color: var(--muted);
-  font-size: 1.1rem;
-  max-width: 56ch;
-}
+    a {
+      color: var(--blue);
+    }
 
-.muted {
-  color: var(--muted);
-}
+    button {
+      font: inherit;
+      color: inherit;
+      cursor: pointer;
+    }
 
+    :focus-visible {
+      outline: 3px solid var(--blue);
+      outline-offset: 2px;
+      border-radius: 8px;
+    }
 
-.top {
-  position: sticky;
-  top: env(safe-area-inset-top, 0px);
-  z-index: 20;
-  padding-top: 12px;
-}
+    .eyebrow {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--pink);
+    }
 
-.bar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px 14px;
-  justify-content: space-between;
-  background: color-mix(in srgb, var(--surface) 92%, transparent);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--line);
-  border-radius: 22px;
-  padding: 8px 10px 8px 16px;
-  box-shadow: var(--shadow);
-}
+    .lede {
+      color: var(--muted);
+      font-size: 1.1rem;
+      max-width: 56ch;
+    }
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.35rem;
-  color: var(--ink);
-  text-decoration: none;
-}
+    .muted {
+      color: var(--muted);
+    }
 
-.brand img {
-  width: 56px;
-  height: 56px;
-  object-fit: contain;
-  border-radius: 12px;
-  background: #000;
-  border: 1px solid rgba(255, 127, 174, 0.35);
-  box-shadow: 0 0 12px rgba(255, 127, 174, 0.18);
-  flex-shrink: 0;
-}
+    /* Header and Navigation */
 
+    .top {
+      position: sticky;
+      top: env(safe-area-inset-top, 0px);
+      z-index: 20;
+      padding-top: 12px;
+    }
 
-nav {
-  display: flex;
-  gap: 4px;
-  overflow-x: auto;
-  max-width: 100%;
-  order: 3;
-  flex: 1 1 100%;
-  padding-bottom: 2px;
-  scrollbar-width: none;
-}
+    .bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 14px;
+      justify-content: space-between;
+      background: rgba(27, 33, 64, 0.94);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 8px 10px 8px 16px;
+      box-shadow: var(--shadow);
+    }
 
-nav::-webkit-scrollbar {
-  display: none;
-}
+    /* Comfort Zone Logo */
 
-nav a {
-  white-space: nowrap;
-  text-decoration: none;
-  color: var(--muted);
-  font-weight: 500;
-  padding: 7px 14px;
-  border-radius: 999px;
-}
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.35rem;
+      color: var(--ink);
+      text-decoration: none;
+      min-width: 0;
+    }
 
-nav a:hover {
-  color: var(--ink);
-  background: var(--blue-soft);
-}
+    .brand img {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      border-radius: 12px;
+      background: #000;
+      border: 1px solid rgba(255, 127, 174, 0.35);
+      box-shadow: 0 0 12px rgba(255, 127, 174, 0.18);
+      flex-shrink: 0;
+    }
 
-nav a[aria-current="page"] {
-  background: var(--pink);
-  color: var(--on-pink);
-  font-weight: 700;
-}
+    .brand span {
+      text-shadow: 0 0 10px rgba(255, 127, 174, 0.22);
+    }
 
-.cartbtn {
-  order: 2;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--blue);
-  color: var(--on-blue);
-  border: 0;
-  border-radius: 999px;
-  padding: 8px 20px;
-  font-weight: 700;
-  text-decoration: none;
-}
+    /* Navigation Links */
 
-@media (min-width: 900px) {
-  nav {
-    order: 2;
-    flex: 0 1 auto;
-    padding: 0;
-  }
+    nav {
+      display: flex;
+      gap: 4px;
+      overflow-x: auto;
+      max-width: 100%;
+      order: 3;
+      flex: 1 1 100%;
+      padding-bottom: 2px;
+      scrollbar-width: none;
+    }
 
-  .cartbtn {
-    order: 3;
-  }
-}
+    nav::-webkit-scrollbar {
+      display: none;
+    }
 
-/* Page Layout */
-.view {
-  padding-top: 36px;
-}
+    nav a {
+      white-space: nowrap;
+      text-decoration: none;
+      color: var(--muted);
+      font-weight: 500;
+      padding: 7px 14px;
+      border-radius: 999px;
+      transition: background 0.2s, color 0.2s;
+    }
 
-.head {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+    nav a:hover {
+      color: var(--ink);
+      background: var(--blue-soft);
+    }
 
-/* Promos Grid & Card Styles */
-promos h1 {
-  color: #fff0f7;
-  text-shadow:
-    0 0 8px rgba(255, 127, 174, 0.5),
-    0 0 20px rgba(255, 35, 120, 0.25);
-}
-.promos {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 20px;
-}
+    nav a[aria-current="page"] {
+      background: var(--pink);
+      color: var(--on-pink);
+      font-weight: 700;
+    }
 
-.promo {
-  border-radius: 24px;
-  padding: 32px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 14px;
-  box-shadow: var(--shadow);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
+    /* Order Button */
 
-.promo.p {
-  background: var(--wash-pink);
-}
+    .cartbtn {
+      order: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--blue);
+      color: var(--on-blue);
+      border: 0;
+      border-radius: 999px;
+      padding: 8px 20px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.2s, filter 0.2s;
+    }
 
-.promo.b {
-  background: var(--wash-blue);
-}
+    .cartbtn:hover {
+      filter: brightness(1.1);
+      transform: translateY(-1px);
+    }
 
-.promo .big {
-  font-family: var(--font-display);
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 1;
-}
+    @media (min-width: 900px) {
+      nav {
+        order: 2;
+        flex: 0 1 auto;
+        padding: 0;
+      }
 
-.promo.p .big {
-  color: var(--pink);
-}
+      .cartbtn {
+        order: 3;
+      }
+    }
 
-.promo.b .big {
-  color: var(--blue);
-}
+    /* Main Page Layout */
 
-.promo p {
-  color: var(--muted);
-  font-size: 0.98rem;
-  line-height: 1.5;
-}
+    .view {
+      padding-top: 36px;
+    }
 
-.badge {
-  display: inline-block;
-  font-size: 0.85rem;
-  font-weight: 700;
-  padding: 6px 14px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--ink);
-}
+    .head {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
 
-.feature {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow);
-}
+    /* Promotions Grid */
 
+    .promos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+      gap: 20px;
+    }
 
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  align-items: center;
-}
+    .promo {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 14px;
+      min-height: 300px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      transition: transform 0.25s, border-color 0.25s;
+    }
 
-.split {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
+    .promo:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255, 127, 174, 0.4);
+    }
 
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  border: 0;
-  border-radius: 999px;
-  padding: 12px 22px;
-  font-weight: 700;
-  text-decoration: none;
-  transition: background 0.2s, transform 0.1s;
-}
+    .promo.p {
+      background: linear-gradient(145deg, #2a1830, #21172e);
+    }
 
-.btn.pink {
-  background: var(--pink);
-  color: var(--on-pink);
-}
+    .promo.b {
+      background: linear-gradient(145deg, #172646, #192039);
+    }
 
-.btn.blue {
-  background: var(--blue);
-  color: var(--on-blue);
-}
+    .promo .big {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1.15;
+    }
 
-.btn.ghost {
-  background: transparent;
-  border: 2px solid var(--line);
-  color: var(--ink);
-}
+    .promo.p .big {
+      color: var(--pink);
+      text-shadow: 0 0 15px rgba(255, 127, 174, 0.2);
+    }
 
-.btn.small {
-  padding: 10px 20px;
-  font-size: 0.92rem;
-}
+    .promo.b .big {
+      color: var(--blue);
+      text-shadow: 0 0 15px rgba(125, 174, 255, 0.2);
+    }
 
-.btn:hover {
-  filter: brightness(1.08);
-}
+    .promo p {
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.6;
+    }
 
-.btn:active {
-  transform: translateY(1px);
-}
+    .promo-action {
+      margin-top: auto;
+      padding-top: 10px;
+    }
 
-img[src=""],
-img:not([src]) {
-  visibility: hidden;
-}
+    .badge {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--ink);
+    }
 
-footer {
-  margin-top: 64px;
-  padding-top: 24px;
-  border-top: 1px solid var(--line);
-  color: var(--muted);
-  font-size: .9rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 24px;
-  justify-content: space-between;
-}
-</style>
+    /* Loyalty Feature */
+
+    .feature {
+      margin-top: 36px;
+      background: rgba(27, 33, 64, 0.96);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .feature .info {
+      padding: 28px;
+    }
+
+    .feature h2 {
+      margin-top: 6px;
+    }
+
+    .feature .muted {
+      margin-top: 8px;
+    }
+
+    /* Buttons */
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .split {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 0;
+      border-radius: 999px;
+      padding: 12px 22px;
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.1s, filter 0.2s;
+    }
+
+    .btn.pink {
+      background: var(--pink);
+      color: var(--on-pink);
+    }
+
+    .btn.blue {
+      background: var(--blue);
+      color: var(--on-blue);
+    }
+
+    .btn.ghost {
+      background: transparent;
+      border: 2px solid var(--line);
+      color: var(--ink);
+    }
+
+    .btn.small {
+      padding: 10px 20px;
+      font-size: 0.92rem;
+    }
+
+    .btn:hover {
+      filter: brightness(1.08);
+      transform: translateY(-1px);
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    img[src=""],
+    img:not([src]) {
+      visibility: hidden;
+    }
+
+    /* Footer */
+
+    footer {
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.9rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 24px;
+      justify-content: space-between;
+    }
+
+    footer a {
+      color: var(--pink);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Mobile Responsive Design */
+
+    @media (max-width: 600px) {
+      body {
+        font-size: 15px;
+      }
+
+      .bar {
+        padding: 10px;
+        gap: 10px;
+      }
+
+      .brand {
+        font-size: 1.15rem;
+      }
+
+      .brand img {
+        width: 48px;
+        height: 48px;
+      }
+
+      .cartbtn {
+        padding: 8px 14px;
+        font-size: 0.9rem;
+      }
+
+      nav {
+        width: 100%;
+        flex-basis: 100%;
+      }
+
+      nav a {
+        padding: 7px 12px;
+        font-size: 0.9rem;
+      }
+
+      .view {
+        padding-top: 28px;
+      }
+
+      .promo {
+        padding: 24px;
+        min-height: 280px;
+      }
+
+      .feature .info {
+        padding: 24px;
+      }
+
+      .split {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .split .btn {
+        width: 100%;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      body::after {
+        background-size: min(90vw, 55vh);
+      }
+    }
+
+    /* Reduced Motion Accessibility */
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<div class="wrap">
-  <header class="top">
-  <div class="bar">
+  <div class="wrap">
 
-    <a class="brand" href="index.html">
-      <img
-        src="images/LOGO.png" alt="Comfort Zone Neon Logo"  width="56" height="56" >
-      <span>Comfort Zone</span>
-    </a>
+    <!-- HEADER -->
+    <header class="top">
+      <div class="bar">
 
-    <nav aria-label="Main">
-      <a href="index.html">Home</a>
-      <a href="featured.html">Featured</a>
-      <a href="bestsellers.html">Best sellers</a>
-      <a href="promos.html" aria-current="page">Promos</a>
-      <a href="about.html">About us</a>
-    </nav>
+        <!-- LOGO AND BRAND NAME -->
+        <a class="brand" href="index.html">
+          <img src="image/LOGO.png" alt="Comfort Zone Neon Logo"
+            width="56"
+            height="56"
+          >
+          <span>Comfort Zone</span>
+        </a>
 
-    <a class="cartbtn" href="order.html">Order now</a>
+        <!-- MAIN NAVIGATION -->
+        <nav aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="featured.html">Featured</a>
+          <a href="bestsellers.html">Best sellers</a>
+          <a href="promos.html" aria-current="page">Promos</a>
+          <a href="about.html">About us</a>
+        </nav>
+
+        <!-- ORDER BUTTON -->
+        <a class="cartbtn" href="order.html">
+          Order now
+        </a>
+
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="view" id="promos">
+
+      <!-- PAGE INTRODUCTION -->
+      <section class="head">
+        <span class="eyebrow">Promos &amp; Offers</span>
+
+        <h1>Little ways to save</h1>
+
+        <p class="lede">
+          Student life shouldn't be expensive. Take advantage of our
+          afternoon perks and daily combo bundles.
+        </p>
+      </section>
+
+      <!-- PROMOTIONAL CARDS -->
+      <section class="promos" aria-label="Current promotions">
+
+        <!-- PROMO 1 -->
+        <article class="promo p">
+          <span class="badge">Student Special</span>
+
+          <span class="big">10% off</span>
+
+          <h3>Student Hour</h3>
+
+          <p>
+            Show a valid school ID on weekdays from 2:00 PM to
+            5:00 PM to receive 10% off signature lemonade.
+          </p>
+
+          <div class="promo-action">
+            <a class="btn pink small" href="order.html">
+              Check student offer
+            </a>
+          </div>
+        </article>
+
+        <!-- PROMO 2 -->
+        <article class="promo b">
+          <span class="badge">Best Value</span>
+
+          <span class="big">₱129</span>
+
+          <h3>The Study Set</h3>
+
+          <p>
+            A classic regular lemonade and a freshly baked butter
+            croissant for less than purchasing them individually.
+            Original price: ₱144.
+          </p>
+
+          <div class="promo-action">
+            <a class="btn blue small" href="order.html">
+              Order combo
+            </a>
+          </div>
+        </article>
+
+        <!-- PROMO 3 -->
+        <article class="promo p">
+          <span class="badge">Share the Happiness</span>
+
+          <span class="big">Bring a friend</span>
+
+          <h3>Duo Sweet Treat</h3>
+
+          <p>
+            Two refreshing regular lemonades and two chocolate chip
+            cookies bundled in one set. Share it with a friend,
+            or keep both!
+          </p>
+
+          <div class="promo-action">
+            <a class="btn pink small" href="order.html">
+              Grab the duo
+            </a>
+          </div>
+        </article>
+
+      </section>
+
+      <!-- LOYALTY CARD FEATURE -->
+      <section class="feature" aria-labelledby="loyalty-title">
+        <div class="info">
+
+          <span class="eyebrow">Loyalty Card</span>
+
+          <h2 id="loyalty-title">
+            Collect stamps on every visit
+          </h2>
+
+          <p class="muted">
+            Grab a stamp card at the counter! Every drink purchase
+            earns you one stamp. Fill eight stamps and enjoy any
+            large drink on the house.
+          </p>
+
+          <div class="row" style="margin-top: 18px">
+            <a class="btn pink small" href="order.html">
+              Start your order
+            </a>
+
+            <a class="btn ghost small" href="menu.html">
+              Browse menu
+            </a>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- PAGE NAVIGATION -->
+      <div
+        class="split"
+        style="margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line)"
+      >
+        <a class="btn ghost small" href="bestsellers.html">
+          &larr; Previous: Best sellers
+        </a>
+
+        <a class="btn ghost small" href="about.html">
+          Next: About us &rarr;
+        </a>
+      </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <span>
+        &copy; 2026 Comfort Zone. Fresh lemonade and pastries.
+      </span>
+
+      <span>
+        Open daily. Study-friendly seating.
+      </span>
+    </footer>
 
   </div>
-</header>
-
-  <main class="view" id="promos">
-    <div class="head" style="margin-bottom:28px">
-      <span class="eyebrow">Promos &amp; Offers</span>
-      <h1>Little ways to save</h1>
-      <p class="lede">Student life shouldn't be expensive. Take advantage of our afternoon perks and daily combo bundles.</p>
-    </div>
-
-    <div class="promos">
-      <!-- Card 1 -->
-      <div class="promo p">
-        <span class="big">10% off</span>
-        <h3>Student hour</h3>
-        <p>Show a valid school ID on weekdays from 2:00 PM to 5:00 PM to receive 10% off signature lemonade.</p>
-        <div style="margin-top:auto">
-          <a class="btn pink small" href="order.html">Check student offer</a>
-        </div>
-      </div>
-
-     
-      <div class="promo b">
-        <span class="big">₱129</span>
-        <h3>The Study Set</h3>
-        <p>A classic regular lemonade and a freshly-baked butter croissant for less than purchasing them individually (Original ₱144).</p>
-        <div style="margin-top:auto">
-          <a class="btn blue small" href="order.html">Order combo</a>
-        </div>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="promo p">
-        <span class="big">Bring a friend</span>
-        <h3>Duo Sweet Treat</h3>
-        <p>Two refreshing regular lemonades and two chocolate chip cookies bundled in one set. Share it with a friend, or keep both!</p>
-        <div style="margin-top:auto">
-          <a class="btn pink small" href="order.html">Grab the duo</a>
-        </div>
-      </div>
-    </div>
-
-  
-    <div class="feature" style="margin-top:36px; border-radius:24px">
-      <div class="info" style="padding:28px">
-        <span class="eyebrow">Loyalty Card</span>
-        <h2>Collect stamps on every visit</h2>
-        <p class="muted" style="margin-top:8px">Grab a stamp card at the counter! Every drink purchase earns you 1 stamp. Fill 8 stamps and enjoy any large drink on the house.</p>
-        <div class="row" style="margin-top:18px">
-          <a class="btn pink small" href="order.html">Start your order</a>
-          <a class="btn ghost small" href="menu.html">Browse menu</a>
-        </div>
-      </div>
-    </div>
-
-   
-    <div class="split" style="margin-top:40px; padding-top:20px; border-top:1px solid var(--line)">
-      <a class="btn ghost small" href="bestsellers.html">&larr; Previous: Best sellers</a>
-      <a class="btn ghost small" href="about.html">Next: About us &rarr;</a>
-    </div>
-  </main>
-
-  <footer>
-    <span>© 2026 Lemon Lane · Comfort Zone. Fresh lemonade and pastries.</span>
-    <span>Open daily. Study-friendly seating.</span>
-  </footer>
-</div>
 </body>
 </html>
-
