@@ -9,7 +9,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fredoka:wght@500;600;700&display=swap">
 <link rel="stylesheet" href="css/order.css">
-
+<link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+<script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
 </head>
 <body>
 <div class="wrap">
@@ -80,7 +81,7 @@
         <div style="background:var(--bg);padding:16px;border-radius:18px;border:1px dashed var(--line);margin-top:10px">
           <div style="display:flex;justify-content:space-between;align-items:center">
             <span style="color:var(--muted)">Item subtotal:</span>
-            <strong id="subtotalDisplay" style="font-size:1.3rem;font-family:var(--font-display);color:var(--pink)">₱99</strong>
+            <strong id="subtotalDisplay" style="font-size:1.3rem;font-family:var(--font-display);color:var(--pink)">₱30</strong>
           </div>
         </div>
 
@@ -161,57 +162,84 @@
 
   </main>
   <footer>
-    <span>© 2026 Lemon Lane · Comfort Zone. Fresh lemonade and pastries.</span>
+    <span>© 2026 Comfort Zone. Fresh lemonade and pastries.</span>
     <span>Open daily. Study-friendly seating.</span>
   </footer>
 </div>
 
 <div class="toast" id="toast" role="status" aria-live="polite">Order confirmed! See you soon.</div>
 
-<script>
-  const itemSelect = document.getElementById('itemSelect');
-  const quantity = document.getElementById('quantity');
-  const subtotalDisplay = document.getElementById('subtotalDisplay');
-  const orderForm = document.getElementById('orderForm');
-  const confirmationBox = document.getElementById('confirmationBox');
-  const toast = document.getElementById('toast');
+<script type="py">
+import asyncio
+from pyscript import document, when
 
-  function updateSubtotal() {
-    const price = parseInt(itemSelect.value, 10);
-    const qty = parseInt(quantity.value, 10) || 1;
-    const total = price * qty;
-    subtotalDisplay.textContent = '₱' + total;
-    return { total, qty };
-  }
+def update_subtotal():
+    item_select = document.getElementById("itemSelect")
+    quantity = document.getElementById("quantity")
+    subtotal_display = document.getElementById("subtotalDisplay")
 
-  itemSelect.addEventListener('change', updateSubtotal);
-  quantity.addEventListener('input', updateSubtotal);
+    try:
+        price = int(item_select.value)
+    except (ValueError, TypeError):
+        price = 0
 
-  orderForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = document.getElementById('cname').value;
-    const mode = document.querySelector('input[name="mode"]:checked').value;
-    const payment = document.querySelector('input[name="payment"]:checked').value;
-    const time = document.getElementById('ctime').value;
-    const itemName = itemSelect.options[itemSelect.selectedIndex].getAttribute('data-name');
-    const { total, qty } = updateSubtotal();
+    try:
+        qty = int(quantity.value)
+        if qty < 1:
+            qty = 1
+    except (ValueError, TypeError):
+        qty = 1
 
-    document.getElementById('confirmName').textContent = name;
-    document.getElementById('confirmMode').textContent = mode;
-    document.getElementById('confirmItem').textContent = qty + 'x ' + itemName;
-    document.getElementById('confirmTotal').textContent = '₱' + total;
-    document.getElementById('confirmTime').textContent = time;
-    document.getElementById('confirmPayment').textContent = payment;
+    total = price * qty
+    subtotal_display.innerText = f"₱{total}"
+    return total, qty
 
-    confirmationBox.style.display = 'block';
-    confirmationBox.scrollIntoView({ behavior: 'smooth' });
+@when("change", "#itemSelect")
+def on_item_change(event):
+    update_subtotal()
 
-    // Show toast
-    toast.classList.add('on');
-    setTimeout(() => {
-      toast.classList.remove('on');
-    }, 4000);
-  });
+@when("input", "#quantity")
+def on_quantity_input(event):
+    update_subtotal()
+
+@when("submit", "#orderForm")
+async def on_order_submit(event):
+    event.preventDefault()
+
+    item_select = document.getElementById("itemSelect")
+    selected_option = item_select.options[item_select.selectedIndex]
+    item_name = selected_option.getAttribute("data-name") or selected_option.innerText
+
+    name = document.getElementById("cname").value
+    time = document.getElementById("ctime").value
+
+    mode_elem = document.querySelector('input[name="mode"]:checked')
+    mode = mode_elem.value if mode_elem else "Dine-in"
+
+    payment_elem = document.querySelector('input[name="payment"]:checked')
+    payment = payment_elem.value if payment_elem else "Cash"
+
+    total, qty = update_subtotal()
+
+    document.getElementById("confirmName").innerText = name
+    document.getElementById("confirmMode").innerText = mode
+    document.getElementById("confirmItem").innerText = f"{qty}x {item_name}"
+    document.getElementById("confirmTotal").innerText = f"₱{total}"
+    document.getElementById("confirmTime").innerText = time
+    document.getElementById("confirmPayment").innerText = payment
+
+    confirmation_box = document.getElementById("confirmationBox")
+    confirmation_box.style.display = "block"
+    confirmation_box.scrollIntoView({"behavior": "smooth"})
+
+    # Show toast notification
+    toast = document.getElementById("toast")
+    toast.classList.add("on")
+    await asyncio.sleep(4)
+    toast.classList.remove("on")
+
+# Initial subtotal calculation on load
+update_subtotal()
 </script>
 
 </body>
