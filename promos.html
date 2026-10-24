@@ -73,13 +73,15 @@ body::after {
   content: "";
   position: fixed;
   inset: 0;
-  background-image: url('images/LOGO.png');
+
+  background-image: url("images/LOGO.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: min(70vw, 70vh);
-  border-radius: 50%;
-  opacity: .07;
+
+  opacity: 0.07;
   mix-blend-mode: screen;
+
   pointer-events: none;
   z-index: 0;
 }
@@ -185,14 +187,16 @@ button {
 }
 
 .brand img {
-  width: 44px;
-  height: 44px;
+  width: 56px;
+  height: 56px;
   object-fit: contain;
-  border-radius: 10px;
+  border-radius: 12px;
   background: #000;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 127, 174, 0.35);
+  box-shadow: 0 0 12px rgba(255, 127, 174, 0.18);
   flex-shrink: 0;
 }
+
 
 nav {
   display: flex;
@@ -267,6 +271,12 @@ nav a[aria-current="page"] {
 }
 
 /* Promos Grid & Card Styles */
+promos h1 {
+  color: #fff0f7;
+  text-shadow:
+    0 0 8px rgba(255, 127, 174, 0.5),
+    0 0 20px rgba(255, 35, 120, 0.25);
+}
 .promos {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -408,22 +418,26 @@ footer {
 <body>
 <div class="wrap">
   <header class="top">
-    <div class="bar">
-      <a class="brand" href="index.html">
-        <img src="images/LOGO.png" alt="" width="44" height="44">
-        Comfort Zone
-      </a>
-      <nav aria-label="Main">
-        <a href="index.html">Home</a>
-        <a href="featured.html">Featured</a>
-        <a href="bestsellers.html">Best sellers</a>
-        <a href="promos.html" aria-current="page">Promos</a>
-        <a href="about.html">About us</a>
-      </nav>
+  <div class="bar">
 
-      <a class="cartbtn" href="order.html">Order now</a>
-    </div>
-  </header>
+    <a class="brand" href="index.html">
+      <img
+        src="images/LOGO.png" alt="Comfort Zone Neon Logo"  width="56" height="56" >
+      <span>Comfort Zone</span>
+    </a>
+
+    <nav aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="featured.html">Featured</a>
+      <a href="bestsellers.html">Best sellers</a>
+      <a href="promos.html" aria-current="page">Promos</a>
+      <a href="about.html">About us</a>
+    </nav>
+
+    <a class="cartbtn" href="order.html">Order now</a>
+
+  </div>
+</header>
 
   <main class="view" id="promos">
     <div class="head" style="margin-bottom:28px">
