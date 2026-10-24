@@ -18,8 +18,8 @@
   min-height: 260px;
 }
 .feature .pic img {
-  height: 250px;
-  width: auto;
+  height: 100%;
+  width: 100%;
   max-width: 100%;
   object-fit: contain;
 }
