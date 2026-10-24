@@ -12,7 +12,7 @@
 .feature .pic {
   background: linear-gradient(160deg, var(--blue-soft), var(--pink-soft));
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   padding: 28px 20px 0;
   min-height: 260px;
