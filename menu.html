@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Menu - Comfort Zone</title>
+<link rel="icon" type="image/x-icon" href="images/logo.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fredoka:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="css/menu.css">
+<link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+<script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="bar">
+      <a class="brand" href="index.html">
+        <img src="images/LOGO.png" alt="Comfort Zone Logo" width="44" height="44">
+        Comfort Zone
+      </a>
+      <nav aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="featured.html">Featured</a>
+        <a href="bestsellers.html">Best sellers</a>
+        <a href="promos.html">Promos</a>
+        <a href="about.html">About us</a>
+      </nav>
+
+      <a class="cartbtn" href="order.html">Order now</a>
+    </div>
+  </header>
+
+  <main class="view" id="menu">
+
+    <div class="head">
+      <span class="eyebrow">Our Menu</span>
+      <h1>Pick your favorite sip &amp; bite</h1>
+      <p class="lede">All lemonades come in Regular (16 oz) or Large (22 oz). Pastries baked fresh daily. Prices in Philippine pesos (₱).</p>
+    </div>
+    <div class="chips" role="group" aria-label="Menu categories">
+      <button class="chip active" data-filter="all" type="button">All Items</button>
+      <button class="chip" data-filter="lemonade" type="button">Lemonades</button>
+      <button class="chip" data-filter="pastry" type="button">Pastries</button>
+      <button class="chip" data-filter="combo" type="button">Combos</button>
+      <button class="chip" data-filter="other" type="button">Other</button>
+    </div>
+    <div class="grid" id="menuGrid" style="margin-top:20px">
+      <article class="card menu-item" data-category="lemonade">
+        <div class="pic pink">
+          <img src="images/Drinks/lemonadePOSTER.jpg" alt="Classic Lemonade">
+        </div>
+        <div class="body">
+          <span class="badge blue">Classic</span>
+          <h3>Classic Lemonade</h3>
+          <p class="desc">Fresh-squeezed lemon, pure cane sugar, and plenty of crushed ice.</p>
+          <div class="buy">
+            <div class="price">₱30</div>
+            <a class="btn pink small" href="order.html">Order</a>
+          </div>
+        </div>
+      </article>
+      <article class="card menu-item" data-category="lemonade">
+        <div class="pic pink">
+          <img src="images/Drinks/STRAWBERRYPOSTER.jpg" alt="Strawberry Lemonade">
+        </div>
+        <div class="body">
+          <span class="badge">Best seller</span>
+          <h3>Strawberry Lemonade</h3>
+          <p class="desc">Real strawberry puree swirled into tart, sparkling cold lemonade.</p>
+          <div class="buy">
+            <div class="price">₱30</div>
+            <a class="btn pink small" href="order.html">Order</a>
+          </div>
+        </div>
+      </article>
+      <article class="card menu-item" data-category="lemonade">
+        <div class="pic blue">
+          <img src="images/Drinks/BLUELEMONADEPOSTER.jpg" alt="Blue Lemonade">
+        </div>
+        <div class="body">
+          <span class="badge blue">Signature</span>
+          <h3>Blue Lemonade</h3>
+          <p class="desc">A sweet and refreshing ocean blue lemonade.</p>
+          <div class="buy">
+            <div class="price">₱30</div>
+            <a class="btn pink small" href="order.html">Order</a>
+          </div>
+        </div>
+      </article>
+      <article class="card menu-item" data-category="lemonade">
+        <div class="pic pink">
+          <img src="images/Drinks/CALAMANSIPOSTER.jpg" alt="Calamansi Lemonade">
+        </div>
+        <div class="body">
+          <span class="badge">Best seller</span>
+          <h3>Calamansi Lemonade</h3>
+          <p class="desc">Delicate bright lemon with a touch of the sour sweet Calamansi.</p>
+          <div class="buy">
+            <div class="price">₱30</div>
+            <a class="btn pink small" href="order.html">Order</a>
+          </div>
+        </div>
+      </article>
+      <article class="card menu-item" data-category="lemonade">
+        <div class="pic pink">
+          <img src="images/Drinks/MELONPOSTER.jpg" alt="Melon Flavor">
+        </div>
+        <div class="body">
+          <span class="badge">Best seller</span>
+          <h3>Melon Lemonade</h3>
+          <p class="desc">Melon flavoured refreshment</p>
+          <div class="buy">
+            <div class="price">₱30</div>
+            <a class="btn pink small" href="order.html">Order</a>
+          </div>
+        </div>
+      </article>
+      <article class="card menu-item" data-category="lemonade">
+        <div class="pic pink">
+          <img src="images/Drinks/cucumberPOSTER.jpg" alt="cucumber flavor">
+        </div>
+        <div class="body">
+          <span class="badge">Best seller</span>
+          <h3>Cucumber Lemonade</h3>
+          <p class="desc">A cucumber flavoured refreshmentp>
+          <div class="buy">
+            <div class="price">₱30</div>
+            <a class="btn pink small" href="order.html">Order</a>
+          </div>
+        </div>
+      </article>
+      <article class="card menu-item" data-category="lemonade">
+        <div class="pic pink">
+          <img src="images/Drinks/mangoPOSTER.jpg" alt="Mango Flavor">
+        </div>
+        <div class="body">
+          <span class="badge">Best seller</span>
+          <h3>Mango Lemonade</h3>
+          <p class="desc">Mango Flavoured refreshment</p>
+          <div class="buy">
+            <div class="price">₱30</div>
+            <a class="btn pink small" href="order.html">Order</a>
+          </div>
+        </div>
+      </article>
+      <article class="card menu-item" data-category="pastry">
+        <div class="pic blue">
+          <img src="images/Pastries/BAGUMBAYAN.jpeg" alt="Bagumbayan">
+        </div>
+        <div class="body">
+          <span class="badge blue">Pastry</span>
+          <h3>Bagumbayan</h3>
+          <p class="desc">The OG snack of the people.</p>
+          <div class="buy">
+            <div class="price">₱10</div>
+            <a class="btn pink small" href="order.html">Order</a>
+          </div>
+        </div>
+      </article>
+      <article class="card menu-item" data-category="pastry">
+        <div class="pic blue">
+          <img src="images/Pastries/BANANABREAD.jpeg" alt="Banana Bread">
+        </div>
+        <div class="body">
+          <span class="badge blue">Pastry</span>
+          <h3>Banana Bread</h3>
+          <p class="desc">From the banana tree to the oven and to you table.</p>
+          <div class="buy">
+            <div class="price">₱15</div>
+            <a class="btn pink small" href="order.html">Order</a>
+          </div>
+        </div>
+      </article>
+      <article class="card menu-item" data-category="pastry">
+        <div class="pic pink">
+          <img src="images/Pastries/ELORDI.png" alt="Elordi">
+        </div>
+        <div class="body">
+          <span class="badge">Best seller</span>
+          <h3>Elordi</h3>
+          <p class="desc">A snack of every afternoon snacks!</p>
+          <div class="buy">
+            <div class="price">₱5</div>
+            <a class="btn pink small" href="order.html">Order</a>
+          </div>
+        </div>
+      </article>
+      <article class="card menu-item" data-category="pastry">
+        <div class="pic blue">
+          <img src="images/Pastries/ENSAYMADA.jpeg" alt="Ensaymada">
+        </div>
+        <div class="body">
+          <span class="badge blue">Pastry</span>
+          <h3>Ensaymada</h3>
+          <p class="desc">A sweet sugary bread perfect for all sweet lover who wishes to eat without the worry of the budget.</p>
+          <div class="buy">
+            <div class="price">₱7</div>
+            <a class="btn pink small" href="order.html">Order</a>
+          </div>
+        </div>
+      </article>
+      <article class="card menu-item" data-category="pastry">
+        <div class="pic blue">
+          <img src="images/Pastries/GERMANBREAD.jpg" alt="German Bread">
+        </div>
+        <div class="body">
+          <span class="badge blue">Pastry</span>
+          <h3>German Bread</h3>
+          <p class="desc">A not super sweet choco flavoured bread.</p>
+          <div class="buy">
+            <div class="price">₱5</div>
+            <a class="btn pink small" href="order.html">Order</a>
+          </div>
+        </div>
+      </article>
+      <article class="card menu-item" data-category="pastry">
+        <div class="pic blue">
+          <img src="images/Pastries/PANBURIKAT.jpeg" alt="Panburikat">
+        </div>
+        <div class="body">
+          <span class="badge blue">Pastry</span>
+          <h3>Panburikat</h3>
+          <p class="desc">A bread with a sweet redish touch, an OG snack of the people</p>
+          <div class="buy">
+            <div class="price">₱10</div>
+            <a class="btn pink small" href="order.html">Order</a>
+          </div>
+        </div>
+      </article>
+      <article class="card menu-item" data-category="pastry">
+        <div class="pic blue">
+          <img src="images/Pastries/PANDECOCO.jpeg" alt="Pan de Coco">
+        </div>
+        <div class="body">
+          <span class="badge blue">Pastry</span>
+          <h3>Pan de Coco</h3>
+          <p class="desc">A bread with coconut filling inside.</p>
+          <div class="buy">
+            <div class="price">₱5</div>
+            <a class="btn pink small" href="order.html">Order</a>
+          </div>
+        </div>
+      </article>
+      <article class="card menu-item" data-category="pastry">
+        <div class="pic blue">
+          <img src="images/Pastries/PANDESAL.jpg" alt="Pandesal">
+        </div>
+        <div class="body">
+          <span class="badge blue">Pastry</span>
+          <h3>Pandesal</h3>
+          <p class="desc">A bread that is simple but an OG partner to everyday tea.</p>
+          <div class="buy">
+            <div class="price">₱5</div>
+            <a class="btn pink small" href="order.html">Order</a>
+          </div>
+        </div>
+      </article>
+      <article class="card menu-item" data-category="pastry">
+        <div class="pic blue">
+          <img src="images/Pastries/STARBREAD.jpg" alt="Starbread">
+        </div>
+        <div class="body">
+          <span class="badge blue">Pastry</span>
+          <h3>Starbread</h3>
+          <p class="desc">A sugary sweet bread with a star shaped and a pointy crispt.</p>
+          <div class="buy">
+            <div class="price">₱5</div>
+            <a class="btn pink small" href="order.html">Order</a>
+          </div>
+        </div>
+      </article>
+      <article class="card menu-item" data-category="combo">
+        <div class="pic blue">
+          <img src="images/Pastries/STUDYSET.jpg" alt="The Study Set">
+        </div>
+        <div class="body">
+          <span class="badge">Value Combo</span>
+          <h3>The Study Set</h3>
+          <p class="desc">Available only in the counter order</p>
+          <div class="buy">
+            <div class="price">₱50 <span style="font-size:.85rem;color:var(--muted);text-decoration:line-through">₱60</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card menu-item" data-category="other">
+        <div class="pic blue">
+          <img src="images/OTHER/Frenchfries.jpg" alt="French Fries">
+        </div>
+        <div class="body">
+          <span class="badge blue">Other</span>
+          <h3>French Fries</h3>
+          <p class="desc">Crispy golden fries, lightly salted and served hot. Perfect study snack.</p>
+          <div class="buy">
+            <div class="price">₱30</div>
+            <a class="btn pink small" href="order.html">Order</a>
+          </div>
+        </div>
+      </article>
+      <article class="card menu-item" data-category="other">
+        <div class="pic pink">
+          <img src="images/OTHER/Icecream.png" alt="Ice Cream">
+        </div>
+        <div class="body">
+          <span class="badge">Other</span>
+          <h3>Ice Cream</h3>
+          <p class="desc">Two scoops of creamy vanilla soft-serve, smooth and cold with every bite.</p>
+          <div class="buy">
+            <div class="price">₱20</div>
+            <a class="btn pink small" href="order.html">Order</a>
+          </div>
+        </div>
+      </article>
+      <article class="card menu-item" data-category="other">
+        <div class="pic blue">
+          <img src="images/OTHER/Gardensalad.jpeg" alt="Garden Salad">
+        </div>
+        <div class="body">
+          <span class="badge blue">Other</span>
+          <h3>Garden Salad</h3>
+          <p class="desc">Fresh greens, tomatoes, cucumber, and a Ketchup and Mayo.</p>
+          <div class="buy">
+            <div class="price">₱79</div>
+            <a class="btn pink small" href="order.html">Order</a>
+          </div>
+        </div>
+      </article>
+      <article class="card menu-item" data-category="other">
+        <div class="pic blue">
+          <img src="images/Drinks/BANANASHAKEPOSTER.jpg" alt="Banana Shake">
+        </div>
+        <div class="body">
+          <span class="badge blue">Other</span>
+          <h3>Banana Shake</h3>
+          <p class="desc">Banana flavoured shake mixed with sweetness and healhty.</p>
+          <div class="buy">
+            <div class="price">₱30</div>
+            <a class="btn pink small" href="order.html">Order</a>
+          </div>
+        </div>
+      </article>
+      <article class="card menu-item" data-category="other">
+        <div class="pic blue">
+          <img src="images/Drinks/BUKOPOSTER.jpg" alt="Buko Juice">
+        </div>
+        <div class="body">
+          <span class="badge blue">Other</span>
+          <h3>Buko Juice</h3>
+          <p class="desc">A fresh buko mixed with sweet condensed milk.</p>
+          <div class="buy">
+            <div class="price">₱30</div>
+            <a class="btn pink small" href="order.html">Order</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+
+  </main>
+  <footer>
+    <span>© 2026 Lemon Lane · Comfort Zone. Fresh lemonade and pastries.</span>
+    <span>Open daily. Study-friendly seating.</span>
+  </footer>
+</div>
+
+<script type="py">
+from pyscript import document, when
+
+@when("click", ".chip")
+def filter_menu(event):
+    chips = document.querySelectorAll(".chip")
+    items = document.querySelectorAll(".menu-item")
+
+    for chip in chips:
+        chip.classList.remove("active")
+
+    clicked = event.currentTarget or event.target.closest(".chip")
+    clicked.classList.add("active")
+
+    
+    selected_filter = clicked.getAttribute("data-filter")
+    for item in items:
+        if selected_filter == "all" or item.getAttribute("data-category") == selected_filter:
+            item.style.display = "flex"
+        else:
+            item.style.display = "none"
+</script>
+
+</body>
+</html>
