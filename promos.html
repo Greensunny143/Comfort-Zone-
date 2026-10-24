@@ -44,30 +44,52 @@
         <h3>Student hour</h3>
         <p>Show a valid school ID at the counter on weekdays from 2:00 PM to 5:00 PM and receive 10% off any signature lemonade flavor.</p>
         <span class="badge" style="margin-top:auto">Weekdays 2–5 PM</span>
+        <button id="student-btn" class="btn pink small" type="button" style="margin-top:10px">Check student offer</button>
+        <p id="student-message" style="margin-top:8px;font-size:0.9rem;font-weight:500;min-height:1.2em"></p>
       </div>
       <div class="promo b">
         <span class="big">₱50</span>
         <h3>The Study Set</h3>
         <p>A classic regular lemonade and a freshly-baked butter croissant for less than purchasing them individually (Original ₱144).</p>
-        <div style="margin-top:auto">
-          <a class="btn blue small" href="order.html">Order combo</a>
+        <div style="margin-top:auto;display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn blue small order-promo" data-promo="The Study Set" type="button">Select Combo</button>
+          <a class="btn ghost small" href="order.html">Order directly</a>
         </div>
       </div>
       <div class="promo p">
         <span class="big">Bring a friend</span>
         <h3>Duo Sweet Treat</h3>
         <p>Two refreshing regular lemonades and two chocolate chip cookies bundled in one set. Share it with a friend, or keep both!</p>
-        <div style="margin-top:auto">
-          <a class="btn pink small" href="order.html">Grab the duo</a>
+        <div style="margin-top:auto;display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn pink small order-promo" data-promo="Duo Sweet Treat" type="button">Select Duo</button>
+          <a class="btn ghost small" href="order.html">Order directly</a>
         </div>
       </div>
 
     </div>
+
+    <!-- Promo selection feedback message -->
+    <div id="promo-message" style="display:none;margin-top:20px;padding:14px 20px;border-radius:18px;background:var(--surface);border:1px solid var(--blue);color:var(--ink);font-weight:500"></div>
+
     <div class="feature" style="margin-top:36px;border-radius:24px">
       <div class="info" style="padding:28px">
         <span class="eyebrow">Loyalty Card</span>
         <h2>Collect stamps on every visit</h2>
         <p class="muted">Grab a stamp card at the counter! Every drink purchase earns you 1 stamp. Fill 8 stamps and enjoy any large drink on the house.</p>
+        
+        <!-- Interactive Stamp Tracker -->
+        <div style="background:var(--bg);border-radius:20px;border:1px dashed var(--line);padding:20px;width:100%;max-width:540px;margin:10px 0">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+            <span style="font-weight:600;font-size:1rem">Loyalty Stamp Progress:</span>
+            <strong id="stamp-count" style="font-family:var(--font-display);font-size:1.4rem;color:var(--pink)">0 / 8</strong>
+          </div>
+          <p id="stamp-message" style="font-size:0.92rem;color:var(--muted);min-height:1.4em;margin-bottom:14px">Click below to record your drinks or test your reward!</p>
+          <div class="row" style="gap:10px">
+            <button id="stamp-btn" class="btn pink small" type="button">+ Add Stamp</button>
+            <button id="reset-btn" class="btn ghost small" type="button">Reset</button>
+          </div>
+        </div>
+
         <div class="row" style="margin-top:10px">
           <a class="btn pink small" href="order.html">Start your order</a>
           <a class="btn ghost small" href="menu.html">Browse menu</a>
@@ -85,6 +107,120 @@
     <span>Open daily. Study-friendly seating.</span>
   </footer>
 </div>
-<script type="py" src="theme.py"></script>
+
+<script type="py">
+from pyscript import document, window
+from datetime import datetime
+import asyncio
+
+# Student promo event
+def check_student_offer(event=None):
+    now = datetime.now()
+
+    # Weekdays: Monday = 0, Friday = 4
+    is_weekday = now.weekday() < 5
+    is_student_hour = 14 <= now.hour < 17
+
+    message = document.querySelector("#student-message")
+    if not message:
+        return
+
+    if is_weekday and is_student_hour:
+        message.innerText = (
+            "🎉 You qualify for 10% off signature lemonade! "
+            "Please present a valid school ID at the counter."
+        )
+        message.style.color = "var(--ok)"
+    else:
+        current_time_str = now.strftime("%I:%M %p")
+        day_name = now.strftime("%A")
+        message.innerText = (
+            f"It's currently {day_name}, {current_time_str}. "
+            "The student offer runs on weekdays from 2:00 PM to 5:00 PM. "
+            "Visit us during student hour with your school ID!"
+        )
+        message.style.color = "var(--pink)"
+
+
+# Promo order button events
+def order_promo(event):
+    btn = event.currentTarget or event.target
+    promo_name = btn.getAttribute("data-promo") or "Selected Promo"
+
+    message = document.querySelector("#promo-message")
+    if message:
+        message.innerText = (
+            f"✓ You selected {promo_name}! "
+            "Redirecting to the order page..."
+        )
+        message.style.display = "block"
+
+    async def redirect():
+        await asyncio.sleep(1)
+        window.location.href = "order.html"
+
+    asyncio.ensure_future(redirect())
+
+
+# Loyalty card events
+stamps = 0
+
+def add_stamp(event=None):
+    global stamps
+
+    message = document.querySelector("#stamp-message")
+    count_el = document.querySelector("#stamp-count")
+
+    if stamps < 8:
+        stamps += 1
+
+    if count_el:
+        count_el.innerText = f"{stamps} / 8"
+
+    if message:
+        if stamps == 8:
+            message.innerText = (
+                "🎉 Congratulations! You earned a free large drink! "
+                "Show this at the counter to claim."
+            )
+            message.style.color = "var(--ok)"
+        else:
+            message.innerText = (
+                f"Stamp added! You need {8 - stamps} more "
+                "stamp(s) to earn your free reward."
+            )
+            message.style.color = "var(--pink)"
+
+
+def reset_stamps(event=None):
+    global stamps
+    stamps = 0
+
+    count_el = document.querySelector("#stamp-count")
+    if count_el:
+        count_el.innerText = "0 / 8"
+
+    message = document.querySelector("#stamp-message")
+    if message:
+        message.innerText = "Your loyalty stamps have been reset."
+        message.style.color = "var(--muted)"
+
+
+# Register event listeners safely with element verification
+student_btn = document.querySelector("#student-btn")
+if student_btn:
+    student_btn.addEventListener("click", check_student_offer)
+
+for button in document.querySelectorAll(".order-promo"):
+    button.addEventListener("click", order_promo)
+
+stamp_btn = document.querySelector("#stamp-btn")
+if stamp_btn:
+    stamp_btn.addEventListener("click", add_stamp)
+
+reset_btn = document.querySelector("#reset-btn")
+if reset_btn:
+    reset_btn.addEventListener("click", reset_stamps)
+</script>
 </body>
 </html>
